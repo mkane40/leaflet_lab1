@@ -1,0 +1,50 @@
+#map {
+    height: 400px;
+    width: 80%;
+    display: inline-block;
+}
+
+#panel {
+    width: 30%;
+    padding: 20px;
+    display: inline-block;
+    vertical-align: bottom;
+    text-align: center;
+}
+
+.sequence-control-container {
+    width: 350px;
+    height: 30px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    line-height: 45px;
+    text-align: center;
+    border: solid gray 1px;
+}
+
+.legend-control-container {
+    width: 350px;
+    height: 30px;
+    background-color: rgba(255,255,255,0.8);
+    padding: 10px;
+    line-height: 45px;
+    text-align: center;
+    border: solid gray 1px;
+}
+
+#temporal-legend {
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.range-slider {
+    width: 50%;
+}
+
+#forward {
+    float: right;
+}
+
+#reverse {
+    float: left;
+}
