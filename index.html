@@ -3,26 +3,49 @@
 
 <head>
     <meta charset="utf-8">
-    <title>This is a webpage...right?</title>
+    <title>LeafletLab - Fertility Rates</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    
+
+
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="lib/leaflet.css" />
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
 </head>
-
+<header>
+    <div class="container-fluid justify-content-center">
+        <div>
+            <h1>Fertility Rates Across Europe - 1830 & 2019</h1>
+        </div>
+    </div>
+</header>
 <body>
-    
-    <div id="map" class = "leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" tabindex="0" style = "position: relative; outline: none;"></div>
-    <div id="panel" style = "position: relative"></div>
-  
+    <div class = "container">
+        <div class="justify-content-center">
+            <div id="map" class = "leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" style = "position: relative"></div>
+        </div>
+        <div  id = "desc_" class="justify-content-center">
+        <h3 class="justify-content-center">About this Map:</h3>
+        <div class="row">
+            <div class="col"><hr></div>
+            <div class="col-auto">
+            <p style = "font-size: 18px;">This map displays fertility rates (average number of children per woman across Europe in 30-year increments [not accounting for 2010 to 2019].  Japan and United States of America were added to provide additional information outside of the region.  Moving through time shows a sharp decline in average fertility rate bring it to about 2.5 today.  Rates have halved just within the last 50 years.  Why is this happening? One, empowerment/success of women in society.  Two, increased care and well-being of children (Roser, 2014).  An article by James Gallagher, "Fertility rate: 'Jaw-dropping' global crash in children being born," describes a world in which populations in many countries will fall to half (refer to figure below.  What kind of consequences will this present in the future?  Less consumption of resources? Faster commute times? However, Gallagher discusses the negative consequence this will bring; in particular, an inverted age structure (more old people than young people).</p>
+            </div>
+            <div class="col"><hr></div>
+        </div>
+        </div>
+        <img style = "padding-bottom: 5%" src="assets/projected_population.png" alt="" width="35%" height="35%" role="img">
+        </div>
+    <footer class = "citation"> Data From: "Max Roser (2014) - "Fertility Rate". <em>Published online at OurWorldInData.org. </em>Retrieved from: 'https://ourworldindata.org/fertility-rate' [Online Resource]"  
+Created by Mackenzie Kane 2022
+    </footer>
   <script type="text/javascript" src="lib/jquery3_6_0.js"></script>
+  <script src='https://code.jquery.com/jquery-1.11.0.min.js'></script>
   <script src="js/script.js"></script>
   <script src="lib/leaflet-src.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>

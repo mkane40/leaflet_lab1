@@ -1,44 +1,79 @@
+body {
+    text-align: center;
+}
+
+footer{
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+}
+
+#desc_{
+    width: 75%;
+}
+
+
+.citation {
+    word-wrap: break-word;
+    background: rgba(0,0,0,.02);
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 3px;
+    color: #969696;
+    font-size: 13px;
+    line-height: 15px;
+    margin-top: -6px;
+    overflow: hidden;
+    padding: 5px 18px;
+    white-space: pre-wrap;
+    
+}
+
+.justify-content-center {
+    position: absolute
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+}
+
 #map {
-    height: 400px;
-    width: 80%;
+    height: 500px;
+    width: 60%;
     display: inline-block;
 }
 
-#panel {
-    width: 30%;
-    padding: 20px;
-    display: inline-block;
-    vertical-align: bottom;
-    text-align: center;
-}
 
 .sequence-control-container {
-    width: 350px;
-    height: 30px;
-    background-color: rgba(255,255,255,0.8);
-    padding: 10px;
-    line-height: 45px;
+    width: 150px;
+    height: 20px;
+    padding: 6px 4px;
+    background-color: white;
+    opacity:.75;
     text-align: center;
-    border: solid gray 1px;
+    border-style: solid;
+    border-width: thin;
+    border-color: grey;
+    border-radius: 5px;
+    
 }
 
 .legend-control-container {
-    width: 350px;
-    height: 30px;
-    background-color: rgba(255,255,255,0.8);
-    padding: 10px;
-    line-height: 45px;
+    padding: 4px 4px;
+    background-color: white;
+    opacity:.75;
     text-align: center;
-    border: solid gray 1px;
+   border-style: solid;
+    border-width: thin;
+    border-color: grey;
+    border-radius: 5px;
 }
 
-#temporal-legend {
-	font-weight: bold;
-	font-size: 1.5em;
-}
 
 .range-slider {
     width: 50%;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 #forward {
@@ -48,3 +83,39 @@
 #reverse {
     float: left;
 }
+
+.menu-ui {
+  background:#fff;
+  position:absolute;
+  top:10px;right:10px;
+  z-index:1;
+  border-radius:3px;
+  width:120px;
+  border:1px solid rgba(0,0,0,0.4);
+  }
+  .menu-ui a {
+    font-size:13px;
+    color:#404040;
+    display:block;
+    margin:0;padding:0;
+    padding:10px;
+    text-decoration:none;
+    border-bottom:1px solid rgba(0,0,0,0.25);
+    text-align:center;
+    }
+    .menu-ui a:first-child {
+      border-radius:3px 3px 0 0;
+      }
+    .menu-ui a:last-child {
+      border:none;
+      border-radius:0 0 3px 3px;
+      }
+    .menu-ui a:hover {
+      background:#f8f8f8;
+      color:#404040;
+      }
+    .menu-ui a.active,
+    .menu-ui a.active:hover {
+      background:#3887BE;
+      color:#FFF;
+      }
