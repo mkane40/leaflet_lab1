@@ -4,7 +4,7 @@
 function createMap() {
     //create the map
     var map = L.map('map', {
-        center: [20, 0],
+        center: [40, 0],
         zoom: 2
     });
     
@@ -13,13 +13,9 @@ function createMap() {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
     }).addTo(map);
     L.Control.geocoder().addTo(map);
-    
-    
-    
-    //L.Control.layers(overlayMaps, {position: 'topleft'})addTo(map);
-    //call getData function
     getData(map);
 }
+
 
 //calculate the radius of each proportional symbol
 function calcPropRadius(attValue) {
@@ -315,11 +311,11 @@ function createSequenceControls(map, attributes){
         if ($(this).attr('id') == 'forward'){
             index++;
             //Step 7: if past the last attribute, wrap around to first attribute
-            index = index > 6 ? 0 : index;
+            index = index > 7 ? 0 : index;
         } else if ($(this).attr('id') == 'reverse'){
             index--;
             //Step 7: if past the first attribute, wrap around to last attribute
-            index = index < 0 ? 6 : index;
+            index = index < 0 ? 7 : index;
         };
         
         $('.range-slider').val(index);
