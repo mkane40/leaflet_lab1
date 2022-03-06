@@ -2,7 +2,7 @@
 
 //function to instantiate the Leaflet map
 function createMap() {
-    //create the map
+    //create  map
     var map = L.map('map', {
         center: [40, 0],
         zoom: 2
@@ -29,7 +29,7 @@ function calcPropRadius(attValue) {
    return radius;
 }
 
-
+// create pop ups for layers
 function createPopup(properties, attribute, layer, radius){
     //add city to popup content string
     var popupContent = "<p><b>County: </b>" + properties.Country +"</p> ";
@@ -113,7 +113,7 @@ function processData(data){
             attributes.push(attribute);
         };
     };
-
+    //return attributes to use in functions
     return attributes;
 };
 
@@ -128,6 +128,7 @@ function createPropSymbols(data, map, attributes){
     }).addTo(map);
 };
 
+//update circles based on attribute value
 function updatePropSymbols(map, attribute){
     map.eachLayer(function(layer){
         if (layer.feature && layer.feature.properties[attribute]){
@@ -138,7 +139,7 @@ function updatePropSymbols(map, attribute){
             var radius = calcPropRadius(props[attribute]);
             layer.setRadius(radius);
 
-            //Example 1.3 line 6...in UpdatePropSymbols()
+            //update with function popups and legend
             createPopup(props, attribute, layer, radius);
             
             updateLegend(map, attribute);
@@ -146,23 +147,22 @@ function updatePropSymbols(map, attribute){
     });
 };
 
+// create legend in bottom right to hold updated prp circles and details
 function createLegend(map, attributes){
     var LegendControl = L.Control.extend({
         options: {
             position: 'bottomright'
         },
-
+        // add onto map
         onAdd: function (map) {
             // create the control container with a particular class name
             var container = L.DomUtil.create('div', 'legend-control-container');
 
-            //PUT YOUR SCRIPT TO CREATE THE TEMPORAL LEGEND HERE
+            //temporal legend 
             $(container).append('<div id="temporal-legend">')
             
-            //Step 1: start attribute legend svg string
+            //tart attribute legend svg string
             var svg = '<svg id="attribute-legend" width="160px" height="70px">';
-            
-            //object to base loop on...replaces Example 3.10 line 1
             var circles = {
                 max: 20,
                 mean: 40,
@@ -243,17 +243,17 @@ function updateLegend(map, attribute){
         //get the radius
         var radius = calcPropRadius(circleValues[key]);
 
-        //Step 3: assign the cy and r attributes
+        //assign the cy and r attributes
         $('#'+key).attr({
             cy: 50 - radius,
             r: radius
         });
         
-         //Step 4: add legend text
+         //add legend details
         $('#'+key+'-text').text(Math.round(circleValues[key]*100)/100 + " Per Women");
     };
 };
-
+// create sequence controls for slider and skips
 function createSequenceControls(map, attributes){
      var SequenceControl = L.Control.extend({
         options: {
@@ -264,14 +264,14 @@ function createSequenceControls(map, attributes){
             // create the control container div with a particular class name
             var container = L.DomUtil.create('div', 'sequence-control-container');
 
-            // ... initialize other DOM elements, add listeners, etc.
-            //create range input element (slider)
+            //initialize other DOM elements, add listeners
+            //create range input element slider
             $(container).append('<input class="range-slider" type="range">');
             $(container).append('<button class="skip" id="reverse">❮</button>');
             $(container).append('<button class="skip" id="forward">❯</button>');
             
             
-            //kill any mouse event listeners on the map What about sliding?
+            //kill any mouse event listeners on the map click and pan function
             $(container).on('mousedown dblclick', function(e){
                 L.DomEvent.stopPropagation(e);
             });
@@ -291,11 +291,6 @@ function createSequenceControls(map, attributes){
 
     map.addControl(new SequenceControl());
     
-    //create range input element (slider)
-    //$('#panel').append('<input class="range-slider" type="range">');
-    //$('#panel').append('<button class="skip" id="reverse">❮</button>');
-    //$('#panel').append('<button class="skip" id="forward">❯</button>');
-    
     //set up slider properties
     $('.range-slider').attr({
         max: 7,
@@ -305,16 +300,16 @@ function createSequenceControls(map, attributes){
     });
     
     $('.skip').click(function(){
-        //sequence
+        //sequence at index
         var index = $('.range-slider').val();
-        //Step 6: increment or decrement depending on button clicked
+        //increment or decrement depending on button clicked
         if ($(this).attr('id') == 'forward'){
             index++;
-            //Step 7: if past the last attribute, wrap around to first attribute
+            //if past the last attribute, wrap around to first attribute
             index = index > 7 ? 0 : index;
         } else if ($(this).attr('id') == 'reverse'){
             index--;
-            //Step 7: if past the first attribute, wrap around to last attribute
+            //if past the first attribute, wrap around to last attribute
             index = index < 0 ? 7 : index;
         };
         
@@ -326,9 +321,9 @@ function createSequenceControls(map, attributes){
         updatePropSymbols(map, attributes[index]);
     });
     
-    //Step 5: input listener for slider
+    //input listener for slider
     $('.range-slider').on('input', function(){
-        //sequence
+        //slider update prop symbols
         var index = $(this).val();
         updatePropSymbols(map, attributes[index]);
     });
@@ -336,7 +331,7 @@ function createSequenceControls(map, attributes){
 };
 
 
-//Step 2: Import GeoJSON data
+//import GeoJSON data
 function getData(map){
     //load the data
     $.ajax("data/fertilityrates.geojson", {
